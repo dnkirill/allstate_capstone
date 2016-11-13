@@ -5,7 +5,7 @@
 This Capstone project provides a sample solution to [Allstate Claims Severity competition](https://www.kaggle.com/c/allstate-claims-severity) on Kaggle. There are several sections in this project:
 
 * **[Data Discovery](part1_data_discovery.ipynb)** — the part where we understand the Allstate's dataset we have and the patterns in it.
-* **[XGBoost model training and tuning](part2_xgboost.ipynb)** — we try to solve the regression problem with [XGBoost](xgboost.readthedocs.io/en/latest/), a powerful and popular among kagglers gradient boosting library.
+* **[XGBoost model training and tuning](part2_xgboost.ipynb)** — we try to solve the regression problem with [XGBoost](xgboost.readthedocs.io/en/latest/), a powerful and popular gradient boosting library.
 * **[Multilayer Perceptron model training and tuning](part3_mlp.ipynb)** — we span the space with feed-forward neural networks. This section will be done with [TensorFlow](https://www.tensorflow.org/) (acting as a backend) and [Keras](https://keras.io/) (acting as a frontend).
 * **[Linear regression stacking and results validation](part4_ensemble.ipynb)** — we combine predictions of XGBoost and MLP using a linear regression and observe the results.
 
