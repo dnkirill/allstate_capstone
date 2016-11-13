@@ -196,7 +196,7 @@ An example of the tuning process via Grid Search is pictured below (see [noteboo
 4. Introduce Hyperopt to search the hyper-parameters space in automated and smarter way (using `tpe.suggest`, trees of parzen estimators). Run several iterations of Hyperopt over multiple configurations of hyper-parameters with various dropouts, layer compositions and numbers of hidden units. Finally, we find out that it's better to use a 4-layer architecture (three hidden layers) with adadelta optimizer, batch normalization and dropout.
 
 The final architecture of the MLP:
-![MLP Configuration](images/mlp3.svg)
+![MLP Configuration](http://cdn.rawgit.com/dnkirill/allstate_capstone/master/images/mlp3.svg)
 
 The CV score for this model: `MAE=1150.009`.
 
@@ -286,7 +286,7 @@ Output:
 
 In this free-form visualization, I'm zooming out our view to look at the whole project as a single entity. There are two main models we trained and optimized: XGBoost and MLP. We made a number of steps, starting from the simplest model possible and ending with a tuned, more robust and sophisticated model. After that, we created out-of-fold predictions for our L1-model, linear regression, and used the stacking technique to combine predictions of L0-models. Finally, we validated the performance of the stacker and trained five variations of it. Averaging the scores of those five stackers, we got the final result: **MAE=1129.91**.
 
-![Steps made in this Capstone](images/capstone_scores.svg)
+![results](http://cdn.rawgit.com/dnkirill/allstate_capstone/master/images/capstone_scores.svg)
 
 Of course, we could have included even more models in our Level 0 or we could have made our stacker more complicated. One possibility of doing this is to train several completely different stackers and combine their predictions (e.g., using a linear combination of their scores) on a new level, Level 2.
 
