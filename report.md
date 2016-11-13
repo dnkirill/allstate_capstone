@@ -38,7 +38,7 @@ I came to the following strategy to solve this problem:
 
 Kaggle platform requires a company that runs a competition, define a clear quality metric participants can compete on. Allstate competition features [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error) as a metric. MAE (mean absolute error) is a very simple and obvious metric that directly compares the predicted value with the ground truth.
 
-<img width="25%" src="images/mae_formula.svg">
+<img width="25%" src="http://cdn.rawgit.com/dnkirill/allstate_capstone/master/images/mae.svg">
 
 This metric is given and cannot be changed since it's a part of the competition. Nevertheless,, I consider it well-suited to this problem. First, MAE (in contrast with MSE) doesn't severely penalize our model for not identifying outliers (there are a few outliers with extreme loss values).
 
