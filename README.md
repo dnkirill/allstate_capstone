@@ -4,19 +4,12 @@
 
 This Capstone project provides a sample solution to [Allstate Claims Severity competition](https://www.kaggle.com/c/allstate-claims-severity) on Kaggle. There are several sections in this project:
 
-* **Data Discovery** — the part where we understand the Allstate's dataset we have and the patterns in it.
-* **XGBoost model training and tuning** — we try to solve the regression problem with [XGBoost](xgboost.readthedocs.io/en/latest/), a powerful and popular among kagglers gradient boosting library.
-* **Multilayer Perceptron model training and tuning** — we span the space with feed-forward neural networks. This section will be done with [TensorFlow](https://www.tensorflow.org/) (acting as a backend) and [Keras](https://keras.io/) (acting as a frontend).
-* **Linear regression stacking** — we combine predictions of XGBoost and MLP using a linear regression and observe the results.
+* **[Data Discovery](part1_data_discovery.ipynb)** — the part where we understand the Allstate's dataset we have and the patterns in it.
+* **[XGBoost model training and tuning](part2_xgboost.ipynb)** — we try to solve the regression problem with [XGBoost](xgboost.readthedocs.io/en/latest/), a powerful and popular among kagglers gradient boosting library.
+* **[Multilayer Perceptron model training and tuning](part3_mlp.ipynb)** — we span the space with feed-forward neural networks. This section will be done with [TensorFlow](https://www.tensorflow.org/) (acting as a backend) and [Keras](https://keras.io/) (acting as a frontend).
+* **[Linear regression stacking and results validation](part4_ensemble.ipynb)** — we combine predictions of XGBoost and MLP using a linear regression and observe the results.
 
-Each section is discussed in detail in corresponding Jupyter notebooks:
-
-* [Data Discovery notebook](part1_data_discovery.ipynb)
-* [XGBoost models notebook](part2_xgboost.ipynb)
-* [Multilayer Perceptron models notebook](part3_mlp.ipynb)
-* [Ensembling and Validation](part4_ensemble.ipynb)
-
-**[Capstone Report](report.md) is available as a Markdown document as well as a [standalone PDF document](report.pdf).**
+**[Capstone Report](report.md) is available as a Markdown document (recommended) as well as a [standalone PDF document](report.pdf).**
 
 ## Requirements
 
@@ -24,10 +17,10 @@ Each section is discussed in detail in corresponding Jupyter notebooks:
 
 This project uses the following software (if version number is omitted, latest version is recommended):
 
-* Python stack: `python 2.7.12, numpy, scipy, sklearn, pandas, matplotlib, h5py`.
-* XGBoost: multi-threaded xgboost should be compiled, `xgboost` python package is also required.
-* Deep Learning stack: CUDA 8.0.44, cuDNN 5.1, TensorFlow 0.11.0rc (compiled with GPU flags), Keras.
-* Hyperopt for hyper-parameter optimization: `hyperopt, networkx` python packages, MongoDB 3.2, `pymongo` python driver.
+* **Python stack**: python 2.7.12, numpy, scipy, sklearn, pandas, matplotlib, h5py.
+* **XGBoost**: multi-threaded xgboost should be compiled, xgboost python package is also required.
+* **Deep Learning stack**: CUDA 8.0.44, cuDNN 5.1, TensorFlow 0.11.0rc (compiled with GPU flags), Keras.
+* **Hyperopt for hyper-parameter optimization:** hyperopt, networkx python packages, MongoDB 3.2, pymongo python driver.
 
 This project was built on two OS: Ubuntu 14.04 (used for computation), Mac OS X (reporting and writing). It is strongly recommended to install and run the project on Ubuntu since compiling GPU-based TensorFlow for Mac OS X is not very straightforward.
 
