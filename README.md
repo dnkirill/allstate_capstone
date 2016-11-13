@@ -15,7 +15,7 @@ This Capstone project provides a sample solution to [Allstate Claims Severity co
 
 ### Dataset
 
-The dataset needs to be downloaded separately (21 MB). Just place it in the same directory with notebooks. You can skip this part if you intend to use a deployment configuration for AWS instance. In this case, dataset will be downloaded via script.
+The dataset needs to be downloaded separately (21 MB). Just place it in the same directory with notebooks. You can skip this part if you intend to use a [deployment configuration](#guide-to-running-this-project) for AWS instance. In this case, dataset will be downloaded via script.
 
 ```
 wget https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv.zip
@@ -36,7 +36,7 @@ This project uses the following software (if version number is omitted, latest v
 * **Deep Learning stack**: CUDA 8.0.44, cuDNN 5.1, TensorFlow 0.11.0rc (compiled with GPU flags), Keras.
 * **Hyperopt for hyper-parameter optimization:** hyperopt, networkx python packages, MongoDB 3.2, pymongo python driver.
 
-This project was built on two OS: Ubuntu 14.04 (used for computation), Mac OS X (reporting and writing). It is strongly recommended to install and run the project on Ubuntu since compiling GPU-based TensorFlow for Mac OS X is not very straightforward.
+This project was built on two OS: Ubuntu 14.04 (used for computation), Mac OS X (reporting and writing). It is strongly recommended to install and run the project on Ubuntu since compiling GPU-based TensorFlow for Mac OS X is not straightforward.
 
 ### Hardware
 
@@ -45,16 +45,16 @@ I tried to reduce the complexity and computation time of my models (I succeeded 
 * MLP Hyperopt optimization
 * Ensemble training and validation
 
-Unfortunately, there is no simple answer to how to compute and optimize neural networks in minutes and not to lose some of their important properties. Nevertheless, some computations are heavy and I came up to the solution to save reviewer's time. For all my notebooks which require heavy calculations, I provide the flag `USE_PRETRAINED = True` which uses precalculated models from `./pretrained` directory. This can be set to `False` to run all the calculations on your machine. 
+Unfortunately, there is no simple answer on how to compute and optimize neural networks in minutes and not to lose some of their desirable properties. Nevertheless, some computations are heavy and I came up to the solution to save reviewer's time. For all my notebooks which require heavy calculations, I provide the flag `USE_PRETRAINED = True` which uses precalculated models from `./pretrained` directory. This can be set to `False` to run all the calculations on your machine. 
 
 It will take up to 2 hours on a reasonably modern PC to complete XGBoost calculations.
 
 Another option would be to use Amazon AWS instances:
 
-* `c4.8xlarge` CPU-optimized instance for XGBoost calculations.
-* `p2.xlarge` GPU-optimized instance for MLP and ensemble calculations.
+* `c4.8xlarge` CPU optimized instance for XGBoost calculations.
+* `p2.xlarge` GPU optimized instance for MLP and ensemble calculations.
 
-Deployment script for Ubuntu instances is provided in `./config` directory of this project.
+Deployment script for Ubuntu instances is provided in `config` directory of this project.
 
 ## Guide to running this project
 
