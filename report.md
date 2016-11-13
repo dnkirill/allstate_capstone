@@ -38,9 +38,7 @@ I came to the following strategy to solve this problem:
 
 Kaggle platform requires a company that runs a competition, define a clear quality metric participants can compete on. Allstate competition features [MAE](https://en.wikipedia.org/wiki/Mean_absolute_error) as a metric. MAE (mean absolute error) is a very simple and obvious metric that directly compares the predicted value with the ground truth.
 
-$$
-MAE = \frac{1}{n}\sum_{i=1}^{n}\left | y_i - \hat{y}_i \right |
-$$
+<img width="25%" src="images/mae_formula.svg">
 
 This metric is given and cannot be changed since it's a part of the competition. Nevertheless,, I consider it well-suited to this problem. First, MAE (in contrast with MSE) doesn't severely penalize our model for not identifying outliers (there are a few outliers with extreme loss values).
 
@@ -99,7 +97,7 @@ Below is a histogram of 14 continuous features, labeled as `cont#`. As we see, t
 
 ### Algorithms and Techniques
 
-**Two notebooks describe this section in much greater detail: [XGBoost notebook](part2_xgboost.ipynb) and [MLP notebook](part2_mlp.ipynb).**
+**Two notebooks describe this section in much greater detail: [XGBoost notebook](part3_xgboost.ipynb) and [MLP notebook](part2_mlp.ipynb).**
 
 **XGBoost**. One of my motivations was to test boosted trees approach and specifically XGBoost. This algorithm became a de-facto standard swiss knife for many Kaggle competitions due to its scalability, flexibility and amazing predictive power.
 
