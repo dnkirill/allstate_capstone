@@ -13,6 +13,20 @@ This Capstone project provides a sample solution to [Allstate Claims Severity co
 
 ## Requirements
 
+### Dataset
+
+The dataset needs to be downloaded separately (21 MB). Just place it in the same directory with notebooks. You can skip this part if you intend to use a deployment configuration for AWS instance. In this case, dataset will be downloaded via script.
+
+```
+wget https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv.zip
+wget https://s3-eu-west-1.amazonaws.com/kd-allstate/test.csv.zip
+unzip "*.zip"
+```
+
+Or just links:
+* [Training set](https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv.zip)
+* [Test set](https://s3-eu-west-1.amazonaws.com/kd-allstate/test.csv.zip)
+
 ### Software
 
 This project uses the following software (if version number is omitted, latest version is recommended):
@@ -40,7 +54,7 @@ Another option would be to use Amazon AWS instances:
 * `c4.8xlarge` CPU-optimized instance for XGBoost calculations.
 * `p2.xlarge` GPU-optimized instance for MLP and ensemble calculations.
 
-Deployment scripts for these instances are provided in `./config` directory of this project.
+Deployment script for Ubuntu instances is provided in `./config` directory of this project.
 
 ## Guide to running this project
 
@@ -54,7 +68,7 @@ Next, deploy the configuration:
 
 1. `sudo apt-get install git`
 2. `git clone https://github.com/dnkirill/allstate_capstone.git`
-3. `cd allstate_capstone; sh config/deploy_ml_stack.sh`
+3. `cd allstate_capstone; sh config/deployment.sh`
 
 It will take about 20 minutes to configure the instance. After that, all the packages are installed, Jupyter server is ready and you can connect to it via your browser: `{instance_public_dns}:8888`. Now you are ready to run notebooks.
 

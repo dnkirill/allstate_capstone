@@ -65,8 +65,9 @@ nohup jupyter notebook & >> jupyter.log
 echo
 
 # Download train and test for Allstate
-# wget https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv
-# wget https://s3-eu-west-1.amazonaws.com/kd-allstate/test.csv
+wget https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv.zip
+wget https://s3-eu-west-1.amazonaws.com/kd-allstate/test.csv.zip
+unzip "*.zip"
 
 # Install XGBoost
 git clone --recursive https://github.com/dmlc/xgboost
