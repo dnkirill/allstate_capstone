@@ -67,13 +67,14 @@ echo
 # Download train and test for Allstate
 wget https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv.zip
 wget https://s3-eu-west-1.amazonaws.com/kd-allstate/test.csv.zip
-unzip "*.zip"
+unzip "*.zip" 
 
 # Install XGBoost
 git clone --recursive https://github.com/dmlc/xgboost
-make ./xgboost
-sh ./xgboost/build.sh
+cd xgboost; make
+sh ./build.sh
 sudo pip install xgboost
+cd ~
 
 # Completed. Some notes to remember:
 echo
