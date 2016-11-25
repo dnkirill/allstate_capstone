@@ -72,7 +72,7 @@ class Stacker(object):
         for k, (train_index, test_index) in enumerate(folds):
             xtr = xtrain[train_index]
             ytr = ytrain[train_index]
-	        estimator = model_func(xtrain.shape[1])
+            estimator = model_func(xtrain.shape[1])
             xte, yte = xtrain[test_index], ytrain[test_index]
             estimator.fit(xtr, ytr, **fit_kwargs)
             fold_preds[test_index] = estimator.predict(xte, **predict_kwargs)
