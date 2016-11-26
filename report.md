@@ -96,20 +96,20 @@ Below is a histogram of 14 continuous features, labeled as `cont#`. As we see on
 
 ### Algorithms and Techniques
 
-**Two notebooks describe this section in much greater detail: [XGBoost notebook](part3_xgboost.ipynb) and [MLP notebook](part2_mlp.ipynb).**
+**Two notebooks describe this section in a much greater detail: [XGBoost notebook](part3_xgboost.ipynb) and [MLP notebook](part2_mlp.ipynb).**
 
-**XGBoost**. One of my motivations was to test boosted trees approach and specifically XGBoost. This algorithm became a de-facto standard swiss knife for many Kaggle competitions due to its scalability, flexibility and amazing predictive power.
+**XGBoost**. One of my motivations was to test boosted trees approach and specifically XGBoost. This algorithm became a de-facto standard swiss knife for many Kaggle competitions due to its scalability, flexibility and an amazing predictive power.
 
-[XGBoost (Extreme Gradient Boosting)](https://xgboost.readthedocs.io/en/latest/) is suitable for supervised learning problems similar to the one we have (a well-defined training dataset and a target feature). XGBoost is a variation of an original boosting algorithm. 
-> Boosting has its roots in a theoretical framework for studying machine learning called the “PAC” learning model[...]. Kearns and Valiant were the first to pose the question of whether a “weak” learning algorithm which performs just slightly better than random guessing in the PAC model can be “boosted” into an arbitrarily accurate “strong” learning algorithm. Schapire came up with thefirst provable polynomial-time boosting algorithm in 1989. A year later, Freund developed a much more efficient boosting algorithm which, although optimal in a certain sense, nevertheless suffered from certain practical drawbacks. The first experiments with these early boosting algorithms were carried out by Drucker, Schapire and Simard on an OCR task.
+[XGBoost (Extreme Gradient Boosting)](https://xgboost.readthedocs.io/en/latest/) is suitable for supervised learning problems similar to the one we have (a well-defined training dataset and a target feature). We describe the intuition behind XGBoost below.
 
-Source: *[A Short Introduction to Boosting](https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf)  (Yoav Freund and Robert E. Schapire)*
+Generally speaking, XGBoost is a variation of boosting, a machine learning ensemble meta-algorithm for reducing bias and variance in supervised learning, and a family of machine learning algorithms which convert weak learners to strong ones. Source: [Wikipedia on boosting](https://en.wikipedia.org/wiki/Boosting_(machine_learning)). Original boosting ideas are rooted in the question posed by Kearns and Valiant of whether a “weak” learning algorithm which performs just slightly better than random guessing in the PAC (distribution-free or probably approximately correct) model can be “boosted” into an arbitrarily accurate “strong” learning algorithm. Source: [A Short Introduction to Boosting](https://cseweb.ucsd.edu/~yfreund/papers/IntroToBoosting.pdf)  (Yoav Freund and Robert E. Schapire). This question has been affirmatively answered by R.E.Schapire in his paper [The Strength of Weak Learnability](http://www.cs.princeton.edu/~schapire/papers/strengthofweak.pdf) which led to the development of many boosting algorithms.
 
-As we see, the original idea of boosting is to build base estimators (weak learners) sequentially. Each next weak learner tries to reduce the bias of the whole combined estimator, thus combining weak learners into a powerful ensemble model.
+As we see, the intuition behind boosting is to build weak learners sequentially. Each next weak learner tries to reduce the bias of the whole combined estimator, thus combining weak learners into a powerful ensemble model. There are various examples of boosting algorithms and techniques, including AdaBoost (adaptive boosting which adapts to the weak learners), LPBoost and gradient boosting.
+
+Specifically, XGBoost is a library which provides the gradient boosting framework. Gradient boosting model is built in a stage-wise fashion like other boosting methods do. This boosting technique generalizes weak learners by allowing optimization of an arbitrary differentiable loss function (the loss function with a calculable gradient).
 
 > XGBoost, as a variation of boosting, features a novel tree learning algorithm for handling sparse data; a theoretically justified weighted quantile sketch procedure enables handling instance weights in approximate tree learning. 
-
-Source: *[XGBoost: A Scalable Tree Boosting System](http://dmlc.cs.washington.edu/data/pdf/XGBoostArxiv.pdf) (Tianqi Chen, Carlos Guestrin)*
+> Source: *[XGBoost: A Scalable Tree Boosting System](http://dmlc.cs.washington.edu/data/pdf/XGBoostArxiv.pdf) (Tianqi Chen, Carlos Guestrin)*
 
 There is a number of advantages of XGBoost:
 * Regularization. It is easy to build an overfitted model for other algorithms as it will be shown in MLP notebook. XGBoost provides very solid regularization out-of-the-box and has many options of controlling regularization. They include: `gamma` (minimum loss reduction to split a node further), `alpha` (L1 regularization term on weights), `lambda` (L2 regularization term on weights), `max_depth` (maximum depth of a tree), `min_child_weight` (minimum sum of weights of all observations required in a child).
@@ -238,6 +238,10 @@ MAE for stacker: 1136.21813333
 The stacker's score `MAE=1136.21` is notably better than the score of the best model in our ensemble. Of course, it can be improved, but we tradeoff the predictive power for the decrease in training time in this project.
 
 **Caveat:** this set of scores is calculated on the holdout subset, not via cross-validation. Thus, we are not allowed to directly compare CV scores with holdout scores. Nevertheless, the holdout subset is expected to have a similar data distribution to the whole training set. This is why we may say that the stacking indeed improved our performance.
+
+As a sidenote, we may be curious how our L0-models are weighted in the stacker. In the linear regression, it's just a linear combination of weights and predictions:
+
+`PREDICTION = 0.59 * XGB_PREDICTION + 0.41 * MLP_PREDICTION`
 
 ## Part 4. Results
 
