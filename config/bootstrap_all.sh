@@ -1,4 +1,4 @@
-echo 
+echo
 echo "This installation sets up a P2 instance on AWS (Ubuntu), installs all necessary packages"
 echo "which are required for XGBoost, TensorFlow, Keras and Hyperopt."
 echo "About 2 GB of data will be downloaded. The whole installation time is about 15-20 minutes."
@@ -9,6 +9,7 @@ case $yn in
     [Nn]* ) exit;;
 esac
 
+cd ~
 # Install dependencies
 sudo apt-get update
 sudo apt-get --assume-yes upgrade
@@ -27,10 +28,12 @@ sudo apt-get update
 sudo apt-get install -y cuda
 
 # Install cuDNN
-wget https://s3-eu-west-1.amazonaws.com/kd-allstate/cudnn-8.0-linux-x64-v5.1.tgz
-tar -zxf cudnn-8.0-linux-x64-v5.1.tgz
-sudo cp cuda/lib64/* /usr/local/cuda/lib64/
-sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
+CUDNN_FILE=$(ls | grep cudnn)
+if [ -f "$CUDNN_FILE" ]; then
+    tar -zxf $CUDNN_FILE
+    sudo cp cuda/lib64/* /usr/local/cuda/lib64/
+    sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
+fi
 
 # Add environmental variables
 echo >> .bashrc
@@ -63,11 +66,6 @@ echo "c.NotebookApp.open_browser = False" >> ~/.jupyter/jupyter_notebook_config.
 echo "c.NotebookApp.ip = '*'" >> ~/.jupyter/jupyter_notebook_config.py
 nohup jupyter notebook & >> jupyter.log
 echo
-
-# Download train and test for Allstate
-wget https://s3-eu-west-1.amazonaws.com/kd-allstate/train.csv.zip
-wget https://s3-eu-west-1.amazonaws.com/kd-allstate/test.csv.zip
-unzip "*.zip" 
 
 # Install XGBoost
 git clone --recursive https://github.com/dmlc/xgboost
