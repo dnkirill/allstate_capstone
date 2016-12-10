@@ -45,6 +45,7 @@ The best option to run the project is to use EC2 AWS instances:
 Please make sure you run Ubuntu 14.04. For Ireland region you can use this AMI: **ami-ed82e39e**. Also, add 30 GB of EBS volume to your instance. Your security group should be configured to allow incoming connections on port `8888`  which is used by Jupyter.
 
 **Step 2. Clone this project**
+
 `sudo apt-get install git`
 
 `cd ~; git clone https://github.com/dnkirill/allstate_capstone.git`
