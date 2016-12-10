@@ -46,7 +46,9 @@ Please make sure you run Ubuntu 14.04. For Ireland region you can use this AMI: 
 
 **Step 2. Clone this project**
 `sudo apt-get install git`
+
 `cd ~; git clone https://github.com/dnkirill/allstate_capstone.git`
+
 `cd allstate_capstone`
 
 **Step 3. Deploy configuration**
@@ -71,7 +73,9 @@ Of course, it's possible to test the project on your local machine. Here are the
   Also, you need to install cuDNN (deep learning library for CUDA). Uncompress it and add it to your CUDA directory:
 
   `tar -zxf cudnn-8.0-linux-x64-v5.1.tgz`
+
   `sudo cp cuda/lib64/* /usr/local/cuda/lib64/`
+
   `sudo cp cuda/include/cudnn.h /usr/local/cuda/include/`
 
 * Then, you can install TensorFlow 0.11.0rc. Make sure you installed GPU-optimized version: https://www.tensorflow.org/versions/r0.11/get_started/os_setup.html#optional-linux-enable-gpu-support
