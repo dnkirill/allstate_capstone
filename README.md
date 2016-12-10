@@ -45,16 +45,16 @@ The best option to run the project is to use EC2 AWS instances:
 Please make sure you run Ubuntu 14.04. For Ireland region you can use this AMI: **ami-ed82e39e**. Also, add 30 GB of EBS volume to your instance. Your security group should be configured to allow incoming connections on port `8888`  which is used by Jupyter.
 
 **Step 2. Clone this project**
-1. `sudo apt-get install git`
-2. `cd ~; git clone https://github.com/dnkirill/allstate_capstone.git`
-3. `cd allstate_capstone`
+`sudo apt-get install git`
+`cd ~; git clone https://github.com/dnkirill/allstate_capstone.git`
+`cd allstate_capstone`
 
 **Step 3. Deploy configuration**
 Deployment scripts (XGBoost-only and XGBoost + MLP) for Ubuntu instances are provided in `config` directory of this project.
 
 Option 1: `bootstrap_xgb_hyperopt.sh` configures an instance (`c4.8xlarge` is recommended) for XGBoost and Hyperopt calculations. It installs essential libraries, python 2.7.12, xgboost, mongodb, hyperopt and python stack: numpy, scipy, pandas, sklearn, etc. Run this if you don't plan to train MLP or ensembles. Part 1 and Part 2 notebooks don't require anything beyond the scope of this script.
 
-Option 2 (full): `bootstrap_all.sh` is the full deployment script and it also installs CUDA, cuDNN, TensorFlow and Keras. This is required to run Part 3 and Part 4 notebooks. **Before running this script, download cuDNN library (tarball) into your home directory**. cuDNN 5.1 works best with this configuration. Once cuDNN has been downloaded, you're ready to run this bash script.
+Option 2 (full): `bootstrap_all.sh` is the full deployment script and it also installs CUDA, cuDNN, TensorFlow and Keras. This is required to run Part 3 and Part 4 notebooks. **Optional, but important:** to speed up calculations, download cuDNN library (tarball) into your home directory before running this script. cuDNN 5.1 works best with this configuration.
 
 It will take about 20 minutes to configure the instance. After that, all the packages are installed, Jupyter server is ready and you can connect to it via your browser: `{instance_public_dns}:8888`.
 
